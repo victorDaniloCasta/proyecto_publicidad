@@ -9,10 +9,18 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.template import loader
 from django.http import HttpResponse
 from django import template
+from .models import empresa
+
 
 @login_required(login_url="/login/")
 def index(request):
     return render(request, "index.html")
+
+@login_required(login_url="/login/")
+def empresas(request):
+    empresas_to_list = empresa.objects.all()
+    return render(request, "empresas.html", {"empresas":empresas_to_list})
+
 
 @login_required(login_url="/login/")
 def pages(request):
@@ -29,7 +37,7 @@ def pages(request):
 
         html_template = loader.get_template( 'page-404.html' )
         return HttpResponse(html_template.render(context, request))
-
+    
     except:
     
         html_template = loader.get_template( 'page-500.html' )
