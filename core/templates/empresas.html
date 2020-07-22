@@ -8,26 +8,68 @@
 {% block content %}	
 
     <!-- [ Main Content ] start -->
-    <div class="pcoded-main-container">
+    <section class="pcoded-main-container">
         <div class="pcoded-content">
-            <div class="row">
-                
-                {% for empresa in empresas %}
-
-                <h2> {{empresa.nit_empresa}} </h2>   
-                <h2> {{empresa.nombre_empresa}} </h2>
-                <h2> {{empresa.estado_empresa}} </h2>
-                <h2> {{empresa.usuario}} </h2> 
-                   
-
-                {% endfor %}
-
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Bootstrap Basic Tables</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#!">Bootstrap Table</a></li>
+                                <li class="breadcrumb-item"><a href="#!">Basic Tables</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- [ Main Content ] end -->
-        </div>
-    </div>
-    <!-- [ Main Content ] end -->
 
+
+            <div class="row">
+                <!-- [ stiped-table ] start -->
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Striped Table</h5>
+                            <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span>
+                        </div>
+                        <div class="card-body table-border-style">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr> 
+                                            <th>#</th>
+                                            <th>NIT</th>
+                                            <th>Nombre</th>
+                                            <th>Estado</th>                             
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       {% for empresa in empresas %}
+                                        <tr> 
+                                            <td>#</td>
+                                            <td>{{empresa.nit_empresa}} </td>
+                                            <td>{{empresa.nombre_empresa}}</td>
+                                            <td>{{empresa.estado_empresa}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ stiped-table ] end -->
+            </div>
+
+
+        </div>
+    </section>>
+            <!-- [ br
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
