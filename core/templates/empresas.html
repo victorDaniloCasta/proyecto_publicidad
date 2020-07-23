@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Dashboard {% endblock %} 
+{% block title %} Empresas {% endblock %} 
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -16,12 +16,11 @@
                     <div class="row align-items-center">
                         <div class="col-md-12">
                             <div class="page-header-title">
-                                <h5 class="m-b-10">Bootstrap Basic Tables</h5>
+                                <h5 class="m-b-10">Empresas</h5>
                             </div>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="#!">Bootstrap Table</a></li>
-                                <li class="breadcrumb-item"><a href="#!">Basic Tables</a></li>
+                                <li class="breadcrumb-item"><a href="#!">Empresas</a></li>
                             </ul>
                         </div>
                     </div>
@@ -34,8 +33,8 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5>Striped Table</h5>
-                            <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span>
+                            <h5>Empresas</h5>
+                            <span class="d-block m-t-5">Empresas registradas</span>
                         </div>
                         <div class="card-body table-border-style">
                             <div class="table-responsive">
@@ -49,9 +48,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        
                                        {% for empresa in empresas %}
                                         <tr> 
-                                            <td>#</td>
+                                            <td>{{ forloop.counter }}</td>
                                             <td>{{empresa.nit_empresa}} </td>
                                             <td>{{empresa.nombre_empresa}}</td>
                                             <td>{{empresa.estado_empresa}}</td>
