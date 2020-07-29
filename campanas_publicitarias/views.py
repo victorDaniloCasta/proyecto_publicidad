@@ -9,17 +9,17 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.template import loader
 from django.http import HttpResponse
 from django import template
-from .models import empresa
+from app.models import campana_publicitaria
 
 
 @login_required(login_url="/login/")
-def index(request):
-    return render(request, "index.html")
+def campanas(request):
+    campanas_to_list = campana_publicitaria.objects.all()
+    return render(request, "campanas.html", {"campanas":campanas_to_list})
 
 @login_required(login_url="/login/")
-def empresas(request):
-    empresas_to_list = empresa.objects.all()
-    return render(request, "empresas.html", {"empresas":empresas_to_list})
+def campanas_create(request):
+    return render(request, "campanas_create.html")
 
 
 @login_required(login_url="/login/")
