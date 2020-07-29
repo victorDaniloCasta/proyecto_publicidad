@@ -5,7 +5,8 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User , Group
+
 
 # Create your models here.
 
@@ -23,7 +24,7 @@ class empresa(models.Model):
     nit_empresa = models.IntegerField(blank=True, verbose_name='NIT')
     nombre_empresa = models.CharField(blank=True, max_length=100, verbose_name='Nombre')
     estado_empresa = models.ForeignKey(estado_empresa, on_delete=models.CASCADE, null=True)
-    usuario = models.ManyToManyField(User)
+    grupo = models.ForeignKey(Group, on_delete=models.CASCADE, null=True)
 
     class Meta():
         verbose_name = "empresa"
@@ -90,3 +91,5 @@ class hashtag(models.Model):
 
     def __str__(self):
         return self.nombre_hastag
+
+
