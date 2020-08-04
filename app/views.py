@@ -77,4 +77,46 @@ def add_empresas(request):
         form = empresaForm() # Unbound form
 
     return render(request, 'crearEmpresa.html', {'form': form})
+
+@login_required(login_url="/login/")
+def add_red_social(request):
+    if request.method == 'POST': # si el usuario está enviando el formulario con datos
+        form = red_socialForm(request.POST) # Bound form
+        if form.is_valid():
+            new_red_social = form.save() # Guardar los datos en la base de datos
+            return HttpResponseRedirect(reverse('redesSociales'))
+    else:
+        form = red_socialForm() # Unbound form
+
+    return render(request, 'crearredesSociales.html', {'form': form})
+
+@login_required(login_url="/login/")
+def add_ubicacion(request):
+    if request.method == 'POST': # si el usuario está enviando el formulario con datos
+        form = ubicacionForm(request.POST) # Bound form
+        if form.is_valid():
+            new_ubicacion = form.save() # Guardar los datos en la base de datos
+            return HttpResponseRedirect(reverse('redesSociales'))
+    else:
+        form = ubicacionForm() # Unbound form
+
+    return render(request, 'crearUbicacion.html', {'form': form})
+
+@login_required(login_url="/login/")
+def add_hashtag(request):
+    if request.method == 'POST': # si el usuario está enviando el formulario con datos
+        form = hashtagForm(request.POST) # Bound form
+        if form.is_valid():
+            new_hashtag = form.save() # Guardar los datos en la base de datos
+            return HttpResponseRedirect(reverse('redesSociales'))
+    else:
+        form = hashtagForm() # Unbound form
+
+    return render(request, 'crearHashtag.html', {'form': form})
+
+@login_required(login_url="/login/")
+def redesSociales(request):
+    redes_sociales_to_list = red_social.objects.all()
+    return render(request, "redesSociales.html", {"redesSociales":redes_sociales_to_list})
+
   

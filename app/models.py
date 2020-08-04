@@ -42,7 +42,7 @@ class campana_publicitaria(models.Model):
     presupuesto_campana = models.IntegerField(blank=True, verbose_name='Presupuesto')
     eficacia_camapana = models.CharField(blank=True, max_length=100, verbose_name='Eficacia')
     empresa_campana = models.ForeignKey(empresa, on_delete=models.CASCADE, null=True)
-    usuario_campana = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    usuario_campana = models.ManyToManyField(User)
 
     class Meta():
         verbose_name = "campana_publicitaria"
@@ -72,7 +72,7 @@ class red_social(models.Model):
     
 class ubicacion(models.Model):
     nombre_ubicacion = models.CharField(blank=True, max_length=100, verbose_name='Nombre')
-    ubicacion = models.ForeignKey(red_social,on_delete=models.CASCADE, null=True)
+    red_social_ubicacion = models.ForeignKey(red_social,on_delete=models.CASCADE, null=True)
 
     class Meta():
         verbose_name = "ubicacion"

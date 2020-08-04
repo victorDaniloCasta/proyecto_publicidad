@@ -19,4 +19,8 @@ urlpatterns = [
     path('empresas/create/', views.add_empresas, name='crearempresa'),
     path('campanas/', views.campanas_publicitarias, name='campanas_publicitarias'),
     path('campanas/create/', views.add_camapana_publicitaria, name='crearcampana'),
+    path('redes/',  views.redesSociales, name='redesSociales'),
+    path('redes/create/', views.add_red_social, name='crearred'),
+    path('ubicacion/', views.add_ubicacion,  name='crearubicacion'),
+    path('hashtag/', views.add_hashtag, name='crearhashtag'),
 ]
