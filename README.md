@@ -1,108 +1,90 @@
-## How to use it
+# Dashboard
+
+## Instalar e iniciar
 
 ```bash
-$ # Get the code
+$ # Clonar el repositorio Github
 $ git clone https://github.com/app-generator/django-dashboard-gradientable.git
 $ cd django-dashboard-gradientable
 $
-$ # Virtualenv modules installation (Unix based systems)
+$ # Instalación del ambiente virtual (Linux)
 $ virtualenv env
 $ source env/bin/activate
 $
-$ # Virtualenv modules installation (Windows based systems)
+$ # Virtualenv modules installation (Windows)
 $ # virtualenv env
 $ # .\env\Scripts\activate
 $
-$ # Install modules - SQLite Storage
+$ # Instalar los requerimientos
 $ pip3 install -r requirements.txt
 $
-$ # Create tables
+$ # Crear los modelos de base datos
 $ python manage.py makemigrations
 $ python manage.py migrate
 $
-$ # Start the application (development mode)
-$ python manage.py runserver # default port 8000
+$ # Iniciar el servidor
+$ python manage.py runserver # Puerto por defecto 8000
 $
-$ # Start the app - custom port
-$ # python manage.py runserver 0.0.0.0:<your_port>
 $
-$ # Access the web app in browser: http://127.0.0.1:8000/
+$ # Acceder al sition web en el navagador: http://127.0.0.1:8000/
 ```
 
-> Note: To use the app, please access the registration page and create a new user. After authentication, the app will unlock the private pages.
+> Nota: Para usar la aplicación debe registrar un nuevo usuario (http://127.0.0.1:8000/register/) y luego ingresar a la aplicación (http://127.0.0.1:8000/login/).
 
-<br />
+<br /> 
 
-## Code-base structure
+## Estructura del código
 
-The project is coded using a simple and intuitive structure presented bellow:
 
 ```bash
 < PROJECT ROOT >
    |
-   |-- core/                               # Implements app logic and serve the static assets
-   |    |-- settings.py                    # Django app bootstrapper
-   |    |-- wsgi.py                        # Start the app in production
-   |    |-- urls.py                        # Define URLs served by all apps/nodes
+   |-- core/                               # Proyecto
+   |    |-- settings.py                    
+   |    |-- wsgi.py                        
+   |    |-- urls.py                        
    |    |
    |    |-- static/
-   |    |    |-- <css, JS, images>         # CSS files, Javascripts files
+   |    |    |-- <css, JS, images>         # Archivos CSS y Javascripts
    |    |
-   |    |-- templates/                     # Templates used to render pages
+   |    |-- templates/                     # Plantillas del proyecto
    |         |
-   |         |-- includes/                 # HTML chunks and components
-   |         |    |-- navigation.html      # Top menu component
-   |         |    |-- sidebar.html         # Sidebar component
-   |         |    |-- footer.html          # App Footer
-   |         |    |-- scripts.html         # Scripts common to all pages
+   |         |-- includes/                 # Componentes HTML
+   |         |    |-- navigation.html      # Top menu
+   |         |    |-- sidebar.html         # Sidebar
+   |         |    |-- footer.html          # Footer
+   |         |    |-- scripts.html         # Scripts comunes de las páginas
    |         |
-   |         |-- layouts/                  # Master pages
-   |         |    |-- base-fullscreen.html # Used by Authentication pages
-   |         |    |-- base.html            # Used by common pages
+   |         |-- layouts/                  # Páginas superiores
+   |         |    |-- base-fullscreen.html # Usadas por las páginas de autenticación
+   |         |    |-- base.html            # HTML usado por páginas comunes
    |         |
-   |         |-- accounts/                 # Authentication pages
-   |         |    |-- login.html           # Login page
-   |         |    |-- register.html        # Register page
+   |         |-- accounts/                 # Páginas de autenticación
+   |         |    |-- login.html           # Página de ingreso
+   |         |    |-- register.html        # Pàgina de registro
    |         |
-   |      index.html                       # The default page
-   |     page-404.html                     # Error 404 page
-   |     page-500.html                     # Error 404 page
-   |       *.html                          # All other HTML pages
+   |      index.html                       # Página por defecto
+   |     page-404.html                     # Página de error 404
+   |     page-500.html                     # Página de error 404 page
+   |       *.html                          # Todas las otras páginas HTML
    |
-   |-- authentication/                     # Handles auth routes (login and register)
+   |-- authentication/                     # Rutas de las páginas de ingreso y registro
    |    |
-   |    |-- urls.py                        # Define authentication routes  
-   |    |-- views.py                       # Handles login and registration  
-   |    |-- forms.py                       # Define auth forms  
+   |    |-- urls.py                        # URLs de autenticación
+   |    |-- views.py                       # Vistas de autenticación
+   |    |-- forms.py                       # Formularios de autenticación
    |
-   |-- app/                                # A simple app that serve HTML files
+   |-- app/                                # Aplicación
    |    |
-   |    |-- views.py                       # Serve HTML pages for authenticated users
-   |    |-- urls.py                        # Define some super simple routes  
+   |    |-- views.py                       # HTML del servicio de autenticación
+   |    |-- urls.py                        # URLs del servicio de autenticación  
    |
-   |-- requirements.txt                    # Development modules - SQLite storage
+   |-- requirements.txt                    # Requerimientos
    |
-   |-- .env                                # Inject Configuration via Environment
-   |-- manage.py                           # Start the app - Django default start script
+   |-- .env                                # Configuración de Django
+   |-- manage.py                           # Archivo principal del proyecto
    |
    |-- ************************************************************************
 ```
 
 <br />
-
-> The bootstrap flow
-
-- Django bootstrapper `manage.py` uses `core/settings.py` as the main configuration file
-- `core/settings.py` loads the app magic from `.env` file
-- Redirect the guest users to Login page
-- Unlock the pages served by *app* node for authenticated users
-
-<br />
-
-
-> Get the code
-
-```bash
-$ git clone https://github.com/app-generator/django-dashboard-gradientable.git
-$ cd django-dashboard-gradientable
-```
