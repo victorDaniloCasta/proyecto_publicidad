@@ -5,7 +5,7 @@
 ```bash
 $ # Clonar el repositorio Github
 $ git clone https://github.com/app-generator/django-dashboard-gradientable.git
-$ cd django-dashboard-gradientable
+$ cd proyecto_publicidad
 $
 $ # Instalación del ambiente virtual (Linux)
 $ virtualenv env
