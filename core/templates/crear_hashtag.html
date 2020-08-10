@@ -34,18 +34,14 @@
                         <h5>Crear hashtag</h5>                        
                     </div>                
                     <div class="card-body table-border-style"> 
-            <form action="{% url 'crearhashtag' %}" method="post" role="form">
+            <form action="{% url 'crear_hashtag' %}" method="post" role="form">
                 <form>
                 {% csrf_token %}                            
                 <div class="form-group">
                     <label>Nombre</label>
                     <input type="text" class="form-control" id="nombre_hastag" {{ form.nombre_hastag }}
                         </input>
-                </div>     
-                <div class="form-group">
-                    <label>Red Social</label>
-                    <select type="text" class="form-control" id="red_social_hashtag" {{ form.red_social_hashtag }} </select>
-                </div>                  
+                </div>                     
                 <button type="submit" name="crearhashtag" class="btn btn-primary btn-block mb-4">Crear
                     hashtag</button>
              </form>

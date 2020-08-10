@@ -17,8 +17,12 @@
 							<span class="pcoded-micon">
 								<i class="feather icon-layout"></i></span><span class="pcoded-mtext">Empresas</span></a>
 						<ul class="pcoded-submenu">
+							{% if perms.app.view_empresa %}
 							<li><a href="/empresas/">Consultar empresas</a></li>					        
-							<li><a href="/empresas/create/">Crear empresas</a></li>	
+							{% endif %}
+							{% if perms.app.add_empresa %}
+							<li><a href="/empresas/create/">Crear empresas</a></li>
+							{% endif %}	
 						</ul>
 					</li>
 					<li class="nav-item pcoded-hasmenu">
@@ -26,8 +30,12 @@
 							<span class="pcoded-micon">
 								<i class="feather icon-layout"></i></span><span class="pcoded-mtext">Campañas</span></a>
 					    <ul class="pcoded-submenu">
+							{% if perms.app.view_campana_publicitaria %}
 							<li><a href="/campanas/">Consultar campañas publicitarias</a></li>					        
-					        <li><a href="/campanas/create/">Crear campaña publicitaria</a></li>					        
+							{% endif %}	
+							{% if perms.app.add_campana_publicitaria %}
+							<li><a href="/campanas/create/">Crear campaña publicitaria</a></li>					        
+							{% endif %}	
 					    </ul>
 					</li>
 					<li class="nav-item pcoded-hasmenu">
@@ -35,9 +43,18 @@
 							<span class="pcoded-micon">
 								<i class="feather icon-layout"></i></span><span class="pcoded-mtext">Redes Sociales</span></a>
 					    <ul class="pcoded-submenu">
+							{% if perms.app.view_red_social %}
 							<li><a href="/redes/">Consultar redes sociales</a></li>					        
-					        <li><a href="/redes/create/">Crear redes sociales</a></li>					        
+							{% endif %}
+							{% if perms.app.add_red_social %}
+							<li><a href="/redes/create/">Crear redes sociales</a></li>					        
+							{% endif %}
 					    </ul>
+					</li>
+					<li class="nav-item">
+                        <a href="/acercade/ " class="nav-link ">
+                            <span class="pcoded-micon">
+                                <i class="feather icon-layers"></i></span><span class="pcoded-mtext">Acerca de</span></a>
 					</li>
 				</ul>
 			</div>

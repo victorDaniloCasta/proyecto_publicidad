@@ -33,17 +33,13 @@
                             <h5>Crear Ubicación</h5>                        
                         </div>                
                         <div class="card-body table-border-style">                        
-                            <form action="{% url 'crearubicacion' %}" method="post">
+                            <form action="{% url 'crear_ubicacion' %}" method="post">
                                 {% csrf_token %}                            
                                 <div class="form-group">
                                     <label>Nombre</label>
                                     <input type="text" class="form-control" id="nombre_ubicacion" {{ form.nombre_ubicacion }} 
                                     </input>
-                                </div>
-                                <div class="form-group">
-                                    <label>Red Social</label>
-                                    <select type="text" class="form-control" id="red_social_ubicacion" {{ form.red_social_ubicacion }}</select>
-                                </div>                                                        
+                                </div>                                
                                     <button type="submit" name="register" class="btn btn-primary btn-block mb-4">Crear</button>                            
                             </form>
                         </div>                    

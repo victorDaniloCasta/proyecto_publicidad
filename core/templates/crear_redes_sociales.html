@@ -36,7 +36,7 @@
                         <h5>Crear Redes Sociales</h5>                        
                     </div>
                     <div class="card-body table-border-style">
-                        <form action="{% url 'crearred' %}" method="post" role="form">
+                        <form action="{% url 'crear_red' %}" method="post" role="form">
                             {% csrf_token %}
                             <div class="form-group">
                                 <label>Nombre</label>
@@ -81,6 +81,14 @@
                                 <label>Campaña Publicitaria</label>
                                 <select type="text" class="form-control" id="campana_publicitaria_red_social" {{ form.campana_publicitaria_red_social }} </select>
                             </div>
+                            <div class="form-group">
+                                <label>Ubicación</label>
+                                <select type="text" class="form-control" id="ubicacion_red_social" {{ form.ubicacion_red_social }} </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Hashtag</label>
+                                <select type="text" class="form-control" id="hashtag_red_social" {{ form.hashtag_red_social }} </select>
+                            </div>
                             <button type="submit" name="crearredsocial" class="btn btn-primary btn-block mb-4">Crear
                                 red Social</button>
                         </form>                        
@@ -88,37 +96,14 @@
                 </div>
             </div>    
         </div>
-        <a href="/ubicacion/" name="crearredsocial" class="btn btn-primary btn-block mb-4">Añadir ubicación </a >
-        <a href="/hashtag/" name="crearredsocial" class="btn btn-primary btn-block mb-4">Añadir hashtag </a >
+        {% if perms.app.add_ubicacion %}
+        <a href="/ubicacion/" name="crear_ubicacion" class="btn btn-primary btn-block mb-4">Añadir ubicación </a >
+        {% endif %}
+        {% if  perms.app.add_hashtag %}
+        <a href="/hashtag/" name="crear_hashtag" class="btn btn-primary btn-block mb-4">Añadir hashtag </a >
+        {% endif %}
         
             
-<!--                     
-                            <div class="col-md-6">
-                                <form action="{% url 'crearhashtag' %}" method="post" role="form">
-                                    <form>
-                                    {% csrf_token %}                            
-                                    <div class="form-group">
-                                        <label>Nombre</label>
-                                        <input type="text" class="form-control" id="nombre_hastag" {{ form.nombre_hastag }}
-                                            </input>
-                                    </div>     
-                                    <div class="form-group">
-                                        <label>Red Social</label>
-                                        <select type="text" class="form-control" id="red_social_hashtag" {{ form.red_social_hashtag }} </select>
-                                    </div>                  
-                                    <button type="submit" name="crearhashtag" class="btn btn-primary btn-block mb-4">Crear
-                                        hashtag</button>
-                                 </form>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                        
-                    </div>
-                </div>
-            </div>
             <!-- [ stiped-table ] end -->
         </div>
     </div>

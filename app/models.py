@@ -24,7 +24,7 @@ class empresa(models.Model):
     nit_empresa = models.IntegerField(blank=True, verbose_name='NIT')
     nombre_empresa = models.CharField(blank=True, max_length=100, verbose_name='Nombre')
     estado_empresa = models.ForeignKey(estado_empresa, on_delete=models.CASCADE, null=True)
-    grupo = models.ForeignKey(Group, on_delete=models.CASCADE, null=True)
+    usuarios = models.ManyToManyField(User)
 
     class Meta():
         verbose_name = "empresa"
@@ -42,7 +42,7 @@ class campana_publicitaria(models.Model):
     presupuesto_campana = models.IntegerField(blank=True, verbose_name='Presupuesto')
     eficacia_camapana = models.CharField(blank=True, max_length=100, verbose_name='Eficacia')
     empresa_campana = models.ForeignKey(empresa, on_delete=models.CASCADE, null=True)
-    usuario_campana = models.ManyToManyField(User)
+    usuario_campana = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     class Meta():
         verbose_name = "campana_publicitaria"
@@ -50,6 +50,28 @@ class campana_publicitaria(models.Model):
 
     def __str__(self):
         return self.nombre_campana
+
+    
+class ubicacion(models.Model):
+    nombre_ubicacion = models.CharField(blank=True, max_length=100, verbose_name='Nombre')    
+
+    class Meta():
+        verbose_name = "ubicacion"
+        verbose_name_plural = "ubicaciones"
+
+    def __str__(self):
+        return self.nombre_ubicacion
+
+class hashtag(models.Model):
+    nombre_hastag = models.CharField(blank=True, max_length=100, verbose_name='Nombre')
+    
+
+    class Meta():
+        verbose_name = "hashtag"
+        verbose_name_plural = "hashtags"
+
+    def __str__(self):
+        return self.nombre_hastag
 
 class red_social(models.Model):
     nombre_red_social = models.CharField(blank=True, max_length=100, verbose_name='Nombre')
@@ -61,6 +83,8 @@ class red_social(models.Model):
     cantidad_reacciones_red_social = models.IntegerField(blank=True, verbose_name='Cantidad de reacciones')
     empresa_red_social = models.ForeignKey(empresa, on_delete=models.CASCADE, null=True)
     campana_publicitaria_red_social = models.ForeignKey(campana_publicitaria, on_delete=models.CASCADE, null=True)
+    ubicacion_red_social = models.ForeignKey(ubicacion, on_delete=models.CASCADE, null=True)
+    hashtag_red_social = models.ForeignKey(hashtag, on_delete=models.CASCADE, null=True)
 
     class Meta():
         verbose_name = "red_social"
@@ -68,28 +92,3 @@ class red_social(models.Model):
 
     def __str__(self):
         return self.nombre_red_social
-
-    
-class ubicacion(models.Model):
-    nombre_ubicacion = models.CharField(blank=True, max_length=100, verbose_name='Nombre')
-    red_social_ubicacion = models.ForeignKey(red_social,on_delete=models.CASCADE, null=True)
-
-    class Meta():
-        verbose_name = "ubicacion"
-        verbose_name_plural = "ubicaciones"
-
-    def __str__(self):
-        return self.nombre_ubicacion
-
-class hashtag(models.Model):
-    nombre_hastag = models.CharField(blank=True, max_length=100, verbose_name='Nombre')
-    red_social_hashtag = models.ForeignKey(red_social, on_delete=models.CASCADE, null=True)
-
-    class Meta():
-        verbose_name = "hashtag"
-        verbose_name_plural = "hashtags"
-
-    def __str__(self):
-        return self.nombre_hastag
-
-
