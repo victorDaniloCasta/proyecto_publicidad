@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Empresas {% endblock %} 
+{% block title %} Campanas {% endblock %} 
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -11,69 +11,22 @@
     <section class="pcoded-main-container">
         <div class="pcoded-content">
             <!-- [ breadcrumb ] start -->
-            <div class="page-header">
-                <div class="page-block">
-                    <div class="row align-items-center">
-                        <div class="col-md-12">
-                            <div class="page-header-title">
-                                <h5 class="m-b-10">Campañas Publicitarias</h5>
-                            </div>
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/ "><i class="feather icon-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="#!">Campañas Publicitarias</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        
 
             <div class="row">
                 <!-- [ stiped-table ] start -->
                 <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Campañas Publicitarias</h5>
-                            <span class="d-block m-t-5">Campañas registradas</span>
-                        </div>
-                        <div class="card-body table-border-style">
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr> 
-                                            <th>#</th>
-                                            <th>Nombre</th>
-                                            <th>Descripcion</th>
-                                            <th>Objetivo</th>
-                                            <th>Publico</th>                             
-                                            <th>Ubicacion</th>
-                                            <th>Presupuesto</th>
-                                            <th>Eficacia</th>
-                                            <th>Empresa</th>
-                                            <th>Usuario</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-                                       {% for campana_publicitaria in campanas_publicitarias %}
-                                        <tr> 
-                                            <td>{{forloop.counter }}</td>
-                                            <td>{{campana_publicitaria.nombre_campana}} </td>
-                                            <td>{{campana_publicitaria.descripcion_campana}}</td>
-                                            <td>{{campana_publicitaria.objetivo_campana}}</td>
-                                            <td>{{campana_publicitaria.publico_campana}}</td>
-                                            <td>{{campana_publicitaria.ubicacion_campana}}</td>
-                                            <td>{{campana_publicitaria.presupuesto_campana}}</td>
-                                            <td>{{campana_publicitaria.eficacia_camapana}}</td>
-                                            <td>{{campana_publicitaria.empresa_campana}}</td>
-                                            <td>{{campana_publicitaria.usuario_campana}}</td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
+                    {% for campana_publicitaria in campanas_publicitarias %}
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card bg-c-blue order-card">
+                            <div class="card-body">
+                                <h5 class="text-white">{{campana_publicitaria.nombre_campana}}</h5>
+                                <h2 class="text-right text-white"><i class="feather icon-shopping-cart float-left"></i><span>{{campana_publicitaria.eficacia_camapana}}</span></h2>
+                                <p class="m-b-0">Presupuesto<span class="float-right">${{campana_publicitaria.presupuesto_campana}}</span></p>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
                 <!-- [ stiped-table ] end -->
             </div>
