@@ -61,6 +61,14 @@
 
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="feather icon-user"></i></span>
+										</div>
+										<select {{ form.group }}></select>
+									</div>
+									<span class="text-error">{{ form.group.errors }}</span>									
+
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="feather icon-mail"></i></span>
 										</div>
 										{{ form.email }}

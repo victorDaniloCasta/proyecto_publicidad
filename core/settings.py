@@ -43,7 +43,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'ip_restriction.IpWhitelister',
+    'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -125,5 +127,15 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'core/static'),
 )
+
+#Restringir direcciones IP
+# ALLOW_ADMIN = False
+# ALLOW_AUTHENTICATED = False
+# ALLOWED_IPS = ['192.168.0.4']
+# RESTRICT_ADMIN = True
+# ALLOWED_ADMIN_IPS = ['192.168.0.4']
+# ALLOWED_ADMIN_IP_RANGES = ['192.168.0.0/24']
+# RESTRICTED_APP_NAMES = ['admin']
+# TRUST_PRIVATE_IP = True
 #############################################################
 #############################################################
