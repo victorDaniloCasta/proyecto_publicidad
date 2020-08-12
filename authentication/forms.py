@@ -6,7 +6,7 @@ Copyright (c) 2019 - present AppSeed.us
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 class LoginForm(forms.Form):
     username = forms.CharField(
@@ -56,6 +56,12 @@ class SignUpForm(UserCreationForm):
                 "class": "form-control"
             }
         ))
+    group = forms.ModelChoiceField(
+        queryset=Group.objects.filter(name__contains='l'), 
+        required=True,
+        
+        )
+
     password1 = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
@@ -70,7 +76,8 @@ class SignUpForm(UserCreationForm):
                 "class": "form-control"
             }
         ))
+    
 
     class Meta:
         model = User
-        fields = ('name','last_name','username', 'email', 'password1', 'password2')
+        fields = ('name','last_name','username', 'email', 'group', 'password1', 'password2')
