@@ -4,7 +4,7 @@
 
 ```bash
 $ # Clonar el repositorio Github
-$ git clone https://github.com/app-generator/django-dashboard-gradientable.git
+$ git clone https://github.com/VictorDaniloCasta/proyecto_publicidad.git
 $ cd proyecto_publicidad
 $
 $ # Instalación del ambiente virtual (Linux)
@@ -14,6 +14,11 @@ $
 $ # Virtualenv modules installation (Windows)
 $ # virtualenv env
 $ # .\env\Scripts\activate
+
+$ with anaconda
+$ conda create --name publicidad
+$ conda activate publicidad
+$
 $
 $ # Instalar los requerimientos
 $ pip3 install -r requirements.txt
@@ -30,7 +35,12 @@ $ # Acceder al sition web en el navagador: http://127.0.0.1:8000/
 ```
 
 > Nota: Para usar la aplicación debe registrar un nuevo usuario (http://127.0.0.1:8000/register/) y luego ingresar a la aplicación (http://127.0.0.1:8000/login/).
+para que se pueda tener acesso desde otras ip se debe modificar el archivo core/settings.py con 
 
+```
+# load production server from .env
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','192.168.0.7','siro.sytes.net', config('SERVER', default='127.0.0.1')]
+```
 <br /> 
 
 ## Estructura del código
