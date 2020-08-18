@@ -21,7 +21,7 @@ class estado_empresa(models.Model):
         return self.estado_nombre_empresa
 
 class empresa(models.Model):
-    nit_empresa = models.IntegerField(blank=True, verbose_name='NIT')
+    nit_empresa = models.IntegerField(null=True, unique=True, verbose_name='NIT', max_length=11)
     nombre_empresa = models.CharField(blank=True, max_length=100, verbose_name='Nombre')
     estado_empresa = models.ForeignKey(estado_empresa, on_delete=models.CASCADE, null=True)
     usuarios = models.ManyToManyField(User)
@@ -39,7 +39,7 @@ class campana_publicitaria(models.Model):
     objetivo_campana = models.CharField(blank=True, max_length=100, verbose_name='Objetivo')
     publico_campana = models.CharField(blank=True, max_length=100, verbose_name='Publico')
     ubicacion_campana = models.CharField(blank=True, max_length=100, verbose_name='Ubicacion')
-    presupuesto_campana = models.IntegerField(blank=True, verbose_name='Presupuesto')
+    presupuesto_campana = models.IntegerField(null=True, verbose_name='Presupuesto')
     eficacia_camapana = models.CharField(blank=True, max_length=100, verbose_name='Eficacia')
     empresa_campana = models.ForeignKey(empresa, on_delete=models.CASCADE, null=True)
     usuario_campana = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -78,9 +78,9 @@ class red_social(models.Model):
     usuario_red_social = models.CharField(blank=True, max_length=100, verbose_name='Usuario')
     fecha_inicio_red_social = models.DateField(auto_now=False, auto_now_add=False,verbose_name='Fecha de Inicio')
     fecha_final_red_social = models.DateField(auto_now=False, auto_now_add=False,verbose_name='Fecha Final')
-    cantidad_seguidores_red_social = models.IntegerField(blank=True, verbose_name='Cantidad de seguidores')
-    cantidad_likes_red_social = models.IntegerField(blank=True, verbose_name='Cantidad de Likes')
-    cantidad_reacciones_red_social = models.IntegerField(blank=True, verbose_name='Cantidad de reacciones')
+    cantidad_seguidores_red_social = models.IntegerField(null=True, verbose_name='Cantidad de seguidores')
+    cantidad_likes_red_social = models.IntegerField(null=True, verbose_name='Cantidad de Likes')
+    cantidad_reacciones_red_social = models.IntegerField(null=True, verbose_name='Cantidad de reacciones')
     empresa_red_social = models.ForeignKey(empresa, on_delete=models.CASCADE, null=True)
     campana_publicitaria_red_social = models.ForeignKey(campana_publicitaria, on_delete=models.CASCADE, null=True)
     ubicacion_red_social = models.ForeignKey(ubicacion, on_delete=models.CASCADE, null=True)
