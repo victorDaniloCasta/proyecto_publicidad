@@ -38,9 +38,11 @@ PRO versions include **Premium UI Kits**, Lifetime updates and **24/7 LIVE Suppo
 ## How to use it
 
 ```bash
-$ # Get the code
-$ git clone https://github.com/app-generator/django-dashboard-gradientable.git
-$ cd django-dashboard-gradientable
+
+$ # Clonar el repositorio Github
+$ git clone https://github.com/VictorDaniloCasta/proyecto_publicidad.git
+$ cd proyecto_publicidad
+
 $
 $ # Virtualenv modules installation (Unix based systems)
 $ virtualenv env
@@ -49,6 +51,11 @@ $
 $ # Virtualenv modules installation (Windows based systems)
 $ # virtualenv env
 $ # .\env\Scripts\activate
+
+$ with anaconda
+$ conda create --name publicidad
+$ conda activate publicidad
+$
 $
 $ # Install modules - SQLite Storage
 $ pip3 install -r requirements.txt
@@ -66,9 +73,18 @@ $
 $ # Access the web app in browser: http://127.0.0.1:8000/
 ```
 
+
 > Note: To use the app, please access the registration page and create a new user. After authentication, the app will unlock the private pages.
 
-<br />
+
+> Nota: Para usar la aplicación debe registrar un nuevo usuario (http://127.0.0.1:8000/register/) y luego ingresar a la aplicación (http://127.0.0.1:8000/login/).
+para que se pueda tener acesso desde otras ip se debe modificar el archivo core/settings.py con 
+
+```
+# load production server from .env
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','192.168.0.7','siro.sytes.net', config('SERVER', default='127.0.0.1')]
+```
+
 
 ## Code-base structure
 
@@ -126,6 +142,7 @@ The project is coded using a simple and intuitive structure presented bellow:
 ```
 
 <br />
+
 
 > The bootstrap flow
 
@@ -215,3 +232,5 @@ Visit `http://localhost:8001` in your browser. The app should be up & running.
 
 ---
 [Django Dashboard GradientAble](https://appseed.us/admin-dashboards/django-dashboard-gradientable) - Provided by **AppSeed** [Web App Generator](https://appseed.us/app-generator).
+
+
