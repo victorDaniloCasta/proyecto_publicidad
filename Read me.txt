@@ -1,0 +1,45 @@
+READ ME
+
+1. Clonar la plantilla de appSeed https://appseed.us/admin-dashboards/django-dashboard-gradientable
+
+	git clone https://github.com/app-generator/django-dashboard-gradientable.git
+	cd django-dashboard-gradientable
+	
+2. Crear entorno virtual 
+
+	python -m venv env
+
+3. Instalar requirements.txt
+	
+	pip3 install -r requirements.txt
+
+4. Hacer las migraciones
+		
+	python manage.py makemigrations
+	python manage.py migrate
+
+5. Iniciar la aplicación
+	
+	python manage.py runserver
+
+6. Crear super usuario
+
+	python manage.py createsuperuser
+
+7. Abrir carpeta App y en el archivo models.py crear los modelos
+
+8. Importar los modelos a admin.py
+
+9. Realizar las migraciones (Paso 4)
+
+10. Configurar las restricciones de IP en core/settings.py (opcional)
+
+Para crear una pagina de fomularios
+
+1. Crear un archivo en app que se llame forms.py y crear los forms de los modelos
+
+2. Definir las funciones views.py
+
+3. Añadir las urls en el archivo urls.py dependiendo de las vistas creadas anteriormente
+
+4. Crear las plantillas html

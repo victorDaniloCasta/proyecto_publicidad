@@ -56,12 +56,6 @@ class SignUpForm(UserCreationForm):
                 "class": "form-control"
             }
         ))
-    group = forms.ModelChoiceField(
-        queryset=Group.objects.filter(name__contains='l'), 
-        required=True,
-        
-        )
-
     password1 = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
@@ -80,4 +74,4 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('name','last_name','username', 'email', 'group', 'password1', 'password2')
+        fields = ('name','last_name','username', 'email', 'password1', 'password2')

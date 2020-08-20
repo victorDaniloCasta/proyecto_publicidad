@@ -8,3 +8,6 @@ from django.apps import AppConfig
 
 class MyConfig(AppConfig):
     name = 'cfg'
+
+
+post_save.connect(Cliente, sender=User)
